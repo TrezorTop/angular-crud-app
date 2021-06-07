@@ -1,1 +1,36 @@
-<p>create-page works!</p>
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <h1>Registering new event</h1>
+
+  <div class="form-control"
+       [ngClass]="{invalid: form.get('name').touched && form.get('name').invalid}">
+    <label for="name">Name of event</label>
+    <input id="name" type="text" formControlName="name">
+    <div *ngIf="form.get('name').touched && form.get('name').invalid" class="validation">
+      <small *ngIf="form.get('name').errors.required">Field must be not empty!</small>
+    </div>
+  </div>
+
+  <div class="form-control"
+       [ngClass]="{invalid: form.get('starts_at').touched && form.get('starts_at').invalid}">
+    <label for="starts_at">Event starts at</label>
+    <br>
+    <input id="starts_at" type="datetime-local" formControlName="starts_at">
+    <div *ngIf="form.get('starts_at').touched && form.get('starts_at').invalid" class="validation">
+      <small *ngIf="form.get('starts_at').errors.required">Field must be not empty!</small>
+    </div>
+  </div>
+
+  <div class="form-control"
+       [ngClass]="{invalid: form.get('description_short').touched && form.get('description_short').invalid}">
+    <label for="description_short">Description</label>
+    <textarea id="description_short" type="text" formControlName="description_short" (keyup)="autoGrowTextZone($event)"></textarea>
+    <div *ngIf="form.get('description_short').touched && form.get('description_short').invalid" class="validation">
+      <small *ngIf="form.get('description_short').errors.maxlength">Max length of this field is{{ form.get('description_short').errors.maxlength.requiredLength }}</small>
+    </div>
+  </div>
+
+  <button class="btn btn-block btn-dark" type="submit" [disabled]="form.invalid">
+    Register
+  </button>
+
+</form>

@@ -2,9 +2,20 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-export const environment = {
-  production: false
+import {Environment, TimepadApi} from "./interface";
+
+export const environment: Environment = {
+  production: false,
 };
+
+export const timepadApi: TimepadApi = {
+  apiUrl: 'https://api.timepad.ru/v1',
+  apiKey: '3b7a3df04437873355e5a79c63cf9cc0578c34ac',
+  organization: {
+    id: 262528,
+    subdomain: "testorganization-event"
+  },
+}
 
 /*
  * For easier debugging in development mode, you can import the following file
