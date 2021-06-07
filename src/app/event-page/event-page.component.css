@@ -1,3 +1,13 @@
-
+.event .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.event h1 {
+  margin-bottom: 0.5rem;
+}
+.event .info strong {
+  margin-right: 1rem;
+}
 
 /*# sourceMappingURL=event-page.component.css.map */
