@@ -1,0 +1,7 @@
+.admin-link {
+  color: black;
+
+  &:hover {
+    color: var(--primary-color);
+  }
+}
