@@ -5,6 +5,7 @@
 
 :root {
   --primary-color: #dc3545;
+  --secondary-color: #3586dc;
   --dark-color: #333333;
   --light-color: #f4f4f4;
   --warning-color: #ffc900;
@@ -274,6 +275,8 @@ table th {
   width: 100%;
   opacity: 0.9;
   margin-bottom: 1rem;
+  background-color: var(--secondary-color);
+  color: #fff;
 
   &.main {
     //justify-content: center;

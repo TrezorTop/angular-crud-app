@@ -1,3 +1,7 @@
+.navbar {
+  background-color: var(--primary-color);
+}
+
 li {
   display: flex;
   align-items: center;

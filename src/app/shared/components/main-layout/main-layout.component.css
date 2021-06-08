@@ -1,8 +1,8 @@
 .admin-link {
-  color: black;
+  color: #fff;
 }
 .admin-link:hover {
-  color: var(--primary-color);
+  color: var(--dark-color);
 }
 
 /*# sourceMappingURL=main-layout.component.css.map */
