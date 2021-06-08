@@ -12,18 +12,22 @@ export interface TimepadApi {
 }
 
 export interface TimepadEvent {
-  id?: string
-  organization: {
+  id?: number
+  organization?: {
     id: number,
     subdomain: string
   },
-  starts_at: string
+  starts_at: string | Date
   name: string
-  categories: [
+  categories?: [
     {
       id: string,
       name: string
     }
   ],
   description_short?: string
+}
+
+export interface timepadEventResponse {
+  id: number
 }

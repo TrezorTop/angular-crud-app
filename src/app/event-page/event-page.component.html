@@ -1,17 +1,22 @@
-<div class="event">
-  <div class="header">
-    <h1>Event Title</h1>
+<div *ngIf="event$ | async as event; else loading">
+  <div class="event">
+    <div class="header">
+      <h1>{{ event.name }}</h1>
 
-    <button class="btn btn-link" routerLink="/">To Home</button>
-  </div>
+      <button class="btn btn-link" routerLink="/">To Home</button>
+    </div>
 
-  <div class="info">
-    <strong>Organization</strong>
-    <small>12.12.21</small>
-  </div>
+    <div class="info">
+      <strong>{{ event.organization['name'] }}</strong>
+      <small>{{ event.starts_at }}</small>
+    </div>
 
-  <div>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, magni.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, magni.</p>
+    <div>
+      <p>{{ event.description_short }}</p>
+    </div>
   </div>
 </div>
+
+<ng-template #loading>
+  <p class="text-center">Loading...</p>
+</ng-template>

@@ -5,6 +5,7 @@ export const environment: Environment = {
 };
 
 export const timepadApi: TimepadApi = {
+  apiUrl: 'https://api.timepad.ru/v1',
   apiKey: '3b7a3df04437873355e5a79c63cf9cc0578c34ac',
   organization: {
     id: 262528,

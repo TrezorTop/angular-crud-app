@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {TimepadEvent} from "../../../../environments/interface";
 
 @Component({
   selector: 'app-event',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./event.component.scss']
 })
 export class EventComponent implements OnInit {
+
+  @Input() event: TimepadEvent
 
   constructor() { }
 

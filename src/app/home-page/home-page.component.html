@@ -1,3 +1,7 @@
-<div class="events">
-  <app-event></app-event>
+<div *ngIf="events$ | async as events; else empty" class="events">
+  <app-event *ngFor="let event of events" [event]="event"></app-event>
 </div>
+
+<ng-template #empty>
+  <p class="text-center">List is loading or empty</p>
+</ng-template>

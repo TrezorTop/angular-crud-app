@@ -1,0 +1,9 @@
+.alert-wrap {
+  position: fixed;
+  top: 50px;
+  right: 50px;
+  max-width: 200px;
+  transition: 250ms;
+}
+
+/*# sourceMappingURL=alert.component.css.map */

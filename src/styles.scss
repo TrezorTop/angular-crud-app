@@ -7,6 +7,7 @@
   --primary-color: #dc3545;
   --dark-color: #333333;
   --light-color: #f4f4f4;
+  --warning-color: #ffc900;
   --danger-color: #dc3545;
   --success-color: #28a745;
 }
@@ -145,7 +146,7 @@ img {
   padding: 0.7rem;
   margin: 1rem 0;
   opacity: 0.9;
-  background: var(--light-color);
+  background: var(--warning-color);
   color: #333;
 }
 

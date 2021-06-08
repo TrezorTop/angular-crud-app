@@ -1,12 +1,16 @@
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {RouterModule} from "@angular/router";
-import {AdminLayoutComponent} from './shared/components/admin-layout/admin-layout.component';
-import { MainPageComponent } from './main-page/main-page.component';
-import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
-import { CreatePageComponent } from './create-page/create-page.component';
-import { EditPageComponent } from './edit-page/edit-page.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+
+import {AdminLayoutComponent} from './shared/components/admin-layout/admin-layout.component';
+import {MainPageComponent} from './main-page/main-page.component';
+import {DashboardPageComponent} from './dashboard-page/dashboard-page.component';
+import {CreatePageComponent} from './create-page/create-page.component';
+import {EditPageComponent} from './edit-page/edit-page.component';
+import {SearchPipe} from "./shared/search.pipe";
+import { AlertComponent } from './shared/components/alert/alert.component';
+import {AlertService} from "./shared/alert.service";
 
 @NgModule({
   declarations: [
@@ -14,7 +18,9 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     MainPageComponent,
     DashboardPageComponent,
     CreatePageComponent,
-    EditPageComponent
+    EditPageComponent,
+    SearchPipe,
+    AlertComponent
   ],
   imports: [
     CommonModule,
@@ -35,9 +41,11 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
   exports: [
     RouterModule
   ],
+  providers: [
+    AlertService
+  ]
 })
 export class AdminModule {
 
-  
 
 }
