@@ -1,5 +1,5 @@
 <div *ngIf="form; else loading">
-  <form [formGroup]="form" (ngSubmit)="submit()">
+  <form [formGroup]="form" (ngSubmit)="updateEvent()">
 
     <div class="form-control"
          [ngClass]="{invalid: form.get('name').touched && form.get('name').invalid}">
@@ -31,9 +31,7 @@
       </div>
     </div>
 
-    <button class="btn btn-primary" type="submit" [disabled]="form.invalid || !form.dirty || submitted"
-            (click)="updateEvent()">Update
-    </button>
+    <button class="btn btn-primary" type="submit" [disabled]="form.invalid || !form.dirty || submitted">Update</button>
 
   </form>
 </div>

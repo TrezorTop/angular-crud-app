@@ -3,7 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {TimepadEvent} from "../../../environments/interface";
 import {timepadApi} from "../../../environments/environment";
 import {EventsService} from "../../shared/events.service";
-import {ActivatedRoute, Params, Router} from "@angular/router";
+import {ActivatedRoute, Params} from "@angular/router";
 import {AlertService} from "../shared/alert.service";
 
 @Component({
@@ -47,6 +47,7 @@ export class CreatePageComponent implements OnInit {
     }
 
     let event: TimepadEvent = {
+      id: 3,
       organization: {
         id: timepadApi.organization.id,
         subdomain: timepadApi.organization.subdomain
@@ -65,7 +66,8 @@ export class CreatePageComponent implements OnInit {
     this.eventsService.postEvent(event).subscribe(() => {
         this.form.reset()
         this.alert.success('Event successfully registered')
-      }, () => {
+      }, (err) => {
+        console.log(err)
         this.form.reset()
         this.alert.warning('Event added, but something went wrong on the server (internal server error, it is a TimepadAPI bug)')
       }

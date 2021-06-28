@@ -4,8 +4,6 @@ import {EventsService} from "../../shared/events.service";
 import {switchMap} from "rxjs/operators";
 import {TimepadEvent} from "../../../environments/interface";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {stringify} from "querystring";
-import {Subscription} from "rxjs";
 import {AlertService} from "../shared/alert.service";
 
 @Component({
@@ -13,14 +11,12 @@ import {AlertService} from "../shared/alert.service";
   templateUrl: './edit-page.component.html',
   styleUrls: ['./edit-page.component.scss']
 })
-export class EditPageComponent implements OnInit, OnDestroy {
+export class EditPageComponent implements OnInit {
 
   form: FormGroup
   eventToUpdate: TimepadEvent
 
   submitted = false
-
-  sub: Subscription
 
   constructor(private route: ActivatedRoute, private eventsService: EventsService, private alert: AlertService) {
   }
@@ -28,7 +24,7 @@ export class EditPageComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.route.params.pipe(
       switchMap((params: Params) => {
-        return this.eventsService.getEventById(params['id'])
+        return this.eventsService.getEventById(parseInt(params['id']))
       })
     ).subscribe((event: TimepadEvent) => {
       this.eventToUpdate = event
@@ -39,10 +35,6 @@ export class EditPageComponent implements OnInit, OnDestroy {
         description_short: new FormControl(event.description_short),
       })
     })
-  }
-
-  submit() {
-
   }
 
   autoGrowTextZone(e) {
@@ -57,11 +49,7 @@ export class EditPageComponent implements OnInit, OnDestroy {
 
     this.submitted = true
 
-    let test = this.form.value.starts_at
-
-    console.log(test)
-
-    this.sub = this.eventsService.updateEvent({
+    this.eventsService.updateEvent({
       id: this.eventToUpdate.id,
       name: this.form.value.name,
       starts_at: this.form.value.starts_at + '+0300',
@@ -74,11 +62,5 @@ export class EditPageComponent implements OnInit, OnDestroy {
 
       this.alert.danger(`An error occurred! Error code: ${error.error.response_status.error_code}, Error message: ${error.error.response_status.message}`)
     })
-  }
-
-  ngOnDestroy(): void {
-    if (this.sub) {
-      this.sub.unsubscribe()
-    }
   }
 }
